@@ -1,3 +1,6 @@
+/* =======================
+   Variáveis
+======================= */
 $color-primary: #d9e5ef;
 $color-secondary: #f58220;
 $font-color-primary: #ffffff;
@@ -6,87 +9,330 @@ $font-default: Arial, Helvetica, sans-serif;
 $font-size-default: 1.6rem;
 $font-size-nav: 1.8rem;
 
+/* =======================
+   Imports
+======================= */
 @import 'fonts';
 @import url('https://fonts.googleapis.com/css2?family=Fruktur&display=swap');
-@import 'nav';
+@import 'animations';
 
+/* =======================
+   Reset e base
+======================= */
 html {
-    font-size: 62.5%;
-    scroll-behavior: smooth;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 body {
-    background-color: $color-primary;
-    font-family: $font-default;
-    margin: 0;
+  background-color: $color-primary;
+  font-family: $font-default;
+  margin: 0;
 }
 
 h1 {
-    color: $font-color-primary;
-    text-align: center;
-    margin-top: 4rem;
+  color: $font-color-primary;
+  text-align: center;
+  margin-top: 4rem;
 }
 
-article {
-
-    h1 {
-        color: #696868;
-        font-size: 3rem;
-        text-align: left;
-    }
-
+article h1 {
+  color: #3F4850;
+  font-size: 3rem;
+  text-align: left;
 }
 
 h2 {
-    color: $font-color-primary;
-    font-family: 'freshman', sans-serif;
-    font-weight: 700;
-    font-size: 2rem;
-    margin-top: 4rem;
-    text-shadow: 1px 2px 8px #FFFFFF;
+  color: $font-color-primary;
+  font-family: 'freshman', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-top: 4rem;
+  text-shadow: 1px 2px 8px #FFFFFF;
 }
 
 h4 {
-
-    font-family: Arial, Helvetica, sans-serif;
-    color: #696868;
-    font-size: 2rem;
-    display: block;
-    text-align: center;
-    width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #3F4850;
+  font-size: 2rem;
+  display: block;
+  text-align: center;
+  width: 100%;
 }
 
-#root,
-header,
-section,
-footer {
-    display: block;
-    float: left;
-    width: 100%;
+article p {
+    color: #3F4850;
+}
+
+#root, header, section, footer {
+  display: block;
+  float: left;
+  width: 100%;
 }
 
 section {
-    padding: 4rem 0;
-    margin: 0;
+  padding: 4rem 0;
+  margin: 0;
 }
 
 .container {
+  display: flex;
+  flex-flow: column;
+  margin: 0 auto;
+  max-width: 90vw;
+}
+
+/* =======================
+   Footer
+======================= */
+footer p {
+  color: $font-color-primary;
+  font-size: $font-size-default;
+  text-align: center;
+  a {
+    color: black;
+  }
+}
+
+/* =======================
+   Header
+======================= */
+header .container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  /* Hero Banner - desktop */
+  .hero {
+    width: 100%;
+    height: 45rem;
+    background-image: url('../assets/images/banner.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    padding: 0;
+
+    h1 {
+      padding-top: 4rem;             /* posiciona o texto */
+      text-align: center;
+      color: #ffffff;
+      width: 100%;
+    }
+  }
+
+  /* Nav */
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    width: 280px;
+    align-items: center;
+
+    &__item {
+      color: $font-color-primary;
+      font-size: $font-size-nav;
+      text-decoration: none;
+      position: relative;
+
+      &:hover {
+        color: #5D2DE6;
+        animation: toTop;
+        animation-duration: 1s;
+      }
+    }
+  }
+}
+
+/* =======================
+   Vitrine / Produtos
+======================= */
+.vitrine {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+
+  &__item {
+    background-color: rgba(250, 250, 250, 0.506);
+    border-radius: 1rem;
     display: flex;
     flex-flow: column;
-    margin: 0 auto;
-    max-width: 90vw;
-}
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 20rem;
+    padding: 1rem;
+    position: relative;
 
-.rodape {
-    display: block;
+    &:hover {
+      animation: toTop;
+      animation-duration: 1s;
+      box-shadow: 0 0 2px 2px rgba(25 , 25 , 25 , .2);
+    }
+  }
+
+  &__image {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+  }
+
+  &__title {
+    font-size: 2rem;
+    color : #3F4850;
     text-align: center;
-    color: #454545;
+    width: 100%;
+  }
+
+  &__desc {
+    color: $font-color-secondary;
+    font-size: $font-size-default;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+  }
+
+  &__button {
+    box-shadow: 0 0 2px 2px rgba(0,150,255,.2);
+    background-color: #7676F8;
+    border-radius: 1rem;
+    border: 1px solid #5D2DE6;
+    color: $font-color-primary;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    font-size: $font-size-default;
+    text-decoration: none;
+    align-self: center;
+    margin-bottom: 2rem;
+
+    &:hover {
+      box-shadow: 0 0 2px 2px #ffffff;
+    }
+  }
 }
 
-@import 'animations';
-@import 'header';
-@import 'sobre';
-@import 'produtos';
-@import 'vitrine';
-@import 'steps';
-@import 'footer';
+/* =======================
+   Steps / Como funciona
+======================= */
+#como-funciona {
+  background: $font-color-primary;
+}
+
+.steps {
+  padding: 1rem;
+  background-color: rgba(250, 250, 250, 0.506);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  &__item {
+    color: #696868;
+    margin: 1rem;
+    width: calc(80% / 5 - 1rem);
+    text-align: center;
+
+    span {
+      color: $color-secondary;
+    }
+  }
+}
+
+/* =======================
+   Produtos
+======================= */
+#produtos {
+  background-color: rgb(157, 182, 201);
+}
+
+/* =======================
+   Media Queries
+======================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  header .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .hero {
+    height: 35rem;
+    display: flex;           /* agora podemos centralizar texto */
+    justify-content: center;
+    align-items: center;
+  }
+
+  .vitrine {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .steps__item {
+    width: calc(80% / 3 - 1rem);
+  }
+
+  header .container .hero {
+    margin-top: 2rem;
+  }
+
+  h4 {
+    margin-top: 3rem;
+    font-size: 1.7rem;
+  }
+
+  footer p {
+    color: #3F4850;
+  }
+}
+
+/* Celular médio */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .vitrine {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+
+  .steps__item {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .hero {
+    height: 30rem;
+  }
+}
+
+/* Celular pequeno */
+@media (max-width: 480px) {
+  .hero {
+    height: 25rem;
+  }
+
+  header .container .hero {
+    margin-top: 2rem;
+  }
+
+  h4 {
+    margin-top: 3rem;
+    font-size: 1.7rem;
+  }
+
+  footer p {
+    color: #3F4850;
+  }
+
+  .vitrine__item, .steps__item {
+    padding: 0 0.5rem;
+  }
+}
